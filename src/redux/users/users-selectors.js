@@ -1,2 +1,2 @@
 
-export const getItems = state => state.users.items;
+export const getUsers = state => state.users;

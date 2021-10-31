@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import './UsersList.scss';
+import css from './UsersList.module.css';
 
 const UsersList = ({ children, onAdd }) => (
   <>
     <button type="button" onClick={onAdd}>Add</button>
-    <ul className="UsersList">{children}</ul>
+    <ul className="usersList">{children}</ul>
   </>
 );
 

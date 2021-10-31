@@ -16,4 +16,8 @@ export const removeUserRequest = createAction('users/removeUserRequest');
 export const removeUserSuccess = createAction('users/removeUserSuccess');
 export const removeUserError = createAction('users/removeUserError');
 
+export const editUserRequest = createAction('users/removeUserRequest');
+export const editUserSuccess = createAction('users/removeUserSuccess');
+export const editUserError = createAction('users/removeUserError');
+
 // export const addFilter = createAction('users/addFilter')

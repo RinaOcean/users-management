@@ -12,6 +12,7 @@ import {
   // addUserError,
   // removeUserRequest,
   removeUserSuccess,
+  editUserSuccess,
   // removeUserError,
 } from './users-actions';
 
@@ -20,6 +21,7 @@ const items = createReducer([], {
   [fetchUserSuccess]: (_, { payload }) => payload,
   [addUserSuccess]: (state, { payload }) => [...state, payload],
   [removeUserSuccess]: (state, { payload }) => state.filter(item => item.id !== payload),
+  [editUserSuccess]: (state, { payload }) => [...state, payload],
 
 });
 

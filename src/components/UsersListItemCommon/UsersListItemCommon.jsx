@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './UsersListItem.scss';
+import css from './UsersListItem.module.css';
 
 const UsersListItemCommon = ({ onDelete, users }) => (
   <>

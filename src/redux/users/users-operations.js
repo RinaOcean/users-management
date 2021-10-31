@@ -12,6 +12,9 @@ import {
   removeUserRequest,
   removeUserSuccess,
   removeUserError,
+  editUserRequest,
+  editUserSuccess,
+  editUserError,
 } from './users-actions';
 
 export const fetchAllUsers = () => async dispatch => {
@@ -67,13 +70,28 @@ export const removeUser = (userId) => dispatch => {
   dispatch(removeUserRequest());
 
   axios
-    .delete(`https://frontend-candidate.dev.sdh.com.ua/v1/contact/:${userId}/`)
+    .delete(`https://frontend-candidate.dev.sdh.com.ua/v1/contact/${userId}/`)
     .then(() => {
       dispatch(removeUserSuccess(userId));
       console.log('User was successfully removed');
     })
     .catch(error => {
       dispatch(removeUserError(error.message));
+      console.log('Something went wrong. Please, retry');
+    })
+}
+
+export const editUser = (userId) => dispatch => {
+  dispatch(editUserRequest());
+
+  axios
+    .put(`https://frontend-candidate.dev.sdh.com.ua/v1/contact/:${userId}/`)
+    .then(() => {
+      dispatch(editUserSuccess(userId));
+      console.log('User was successfully edited');
+    })
+    .catch(error => {
+      dispatch(editUserError(error.message));
       console.log('Something went wrong. Please, retry');
     })
 }

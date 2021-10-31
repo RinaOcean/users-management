@@ -37,7 +37,7 @@ export default function UsersForm() {
     setGender('');
     setJob('');
     setBiography('');
-    setIs_active(false);
+    setIs_active('false');
   }
 
   return (
