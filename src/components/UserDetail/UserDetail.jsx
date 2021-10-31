@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { editUser, getUsers, removeUser } from '../../redux/users';
-import './UsersListItemFull.module.css';
+import { getUsers, removeUser } from '../../redux/users';
+import css from './UsersListItem.module.css';
 
-export default function UsersListItemFull() {
+export default function UserDetail() {
   const dispatch = useDispatch();
   const users = useSelector(getUsers);
   const onDelete = id => dispatch(removeUser(id));
@@ -12,6 +12,7 @@ export default function UsersListItemFull() {
   return (
     <>
       {users.map(({ id, first_name, last_name, birth_date, gender, job, biography, is_active }) => {
+        const enabled = String(is_active)
         return (
           <li key={id} className="UsersListItem">
             <p className="UsersListItemInfo">First name: {first_name}</p>
@@ -20,7 +21,7 @@ export default function UsersListItemFull() {
             <p className="UsersListItemInfo">Gender: {gender}</p>
             <p className="UsersListItemInfo">Job: {job}</p>
             <p className="UsersListItemInfo">Biography: {biography}</p>
-            <p className="UsersListItemInfo">Enabled: {is_active}</p>
+            <p className="UsersListItemInfo">Enabled: {enabled}</p>
             <button type="button" onClick={() => onEdit(id)}>Edit</button>
             <button type="button" onClick={() => onDelete(id)}>Delete</button>
           </li>
@@ -47,4 +48,5 @@ UsersListItemFull.propTypes = {
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
 };
+
 

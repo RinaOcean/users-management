@@ -47,6 +47,9 @@ export default function UsersForm() {
         <input
           type="text"
           name="firstName"
+          maxLength="256"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Имя может состоять только из букв, апострофа, тире и пробелов."
           required
           placeholder="Your first name"
           value={first_name}
@@ -58,6 +61,9 @@ export default function UsersForm() {
         <input
           type="text"
           name="lastName"
+          maxLength="256"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Last name может состоять только из букв, апострофа, тире и пробелов."
           required
           placeholder="Your last name"
           value={last_name}
@@ -75,13 +81,14 @@ export default function UsersForm() {
           id={birth_dateId}
         />
 
-        <label htmlFor={genderId}>Your gender</label>
+        <label htmlFor={genderId}>Gender</label>
         <select
           name="gender"
           id={genderId}
           value={gender}
           onChange={event => setGender(event.target.value)}
         >
+          <option value="" selected disabled></option>
           <option value="male">male</option>
           <option value="female">female</option>
 
@@ -91,6 +98,9 @@ export default function UsersForm() {
         <input
           type="text"
           name="job"
+          maxLength="256"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Job может состоять только из букв, апострофа, тире и пробелов."
           required
           placeholder="Your job"
           value={job}
@@ -99,15 +109,17 @@ export default function UsersForm() {
         />
 
         <label htmlFor={biographyId}>Biography</label>
-        <input
+        <textarea
           type="text"
           name="biography"
+          maxLength="1024"
           required
           placeholder="Your biography"
           value={biography}
           onChange={event => setBiography(event.target.value)}
           id={biographyId}
-        />
+        >
+        </textarea>
 
         <label htmlFor={is_activeId}>Enabled</label>
         <input

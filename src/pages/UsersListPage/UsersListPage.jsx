@@ -5,7 +5,7 @@ import { fetchAllUsers } from '../../redux/users';
 import { getUsers } from '../../redux/users';
 
 import UsersList from '../../components/UsersList/UsersList';
-import UsersListItemFull from '../../components/UsersListItemFull/UsersListItemFull';
+import UsersListItem from '../../components/UsersListItem/UsersListItem';
 
 import css from './UsersListPage.module.css'
 
@@ -20,8 +20,8 @@ export default function UsersListPage() {
   console.log(users);
   return (
     <UsersList>
-      <UsersListItemFull />
+      <UsersListItem />
     </UsersList>
   )
 
-}
+};
