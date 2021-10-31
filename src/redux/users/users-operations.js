@@ -38,12 +38,12 @@ export const fetchUser = (userId) => async dispatch => {
 
 };
 
-export const addUser = ({ firstName, lastName, dateOfBirth, sex, job, biography, is_active }) => dispatch => {
+export const addUser = ({ first_name, last_name, birth_date, gender, job, biography, is_active }) => dispatch => {
   const user = {
-    firstName,
-    lastName,
-    dateOfBirth,
-    sex,
+    first_name,
+    last_name,
+    birth_date,
+    gender,
     job,
     biography,
     is_active,

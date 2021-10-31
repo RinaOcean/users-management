@@ -1,18 +1,18 @@
-import { combineReducers } from "redux";
+// import { combineReducers } from "redux";
 import { createReducer } from '@reduxjs/toolkit';
 import {
-  fetchUserRequest,
+  // fetchUserRequest,
   fetchUserSuccess,
-  fetchUserError,
-  addUserRequest,
-  fetchAllUsersRequest,
+  // fetchUserError,
+  // addUserRequest,
+  // fetchAllUsersRequest,
   fetchAllUsersSuccess,
-  fetchAllUsersError,
+  // fetchAllUsersError,
   addUserSuccess,
-  addUserError,
-  removeUserRequest,
+  // addUserError,
+  // removeUserRequest,
   removeUserSuccess,
-  removeUserError,
+  // removeUserError,
 } from './users-actions';
 
 const items = createReducer([], {
@@ -23,4 +23,4 @@ const items = createReducer([], {
 
 });
 
-export default items
+export default items;
