@@ -16,8 +16,7 @@ export default function UsersListPage() {
     dispatch(fetchAllUsers());
   }, [dispatch]);
 
-  const users = useSelector(getUsers)
-  console.log(users);
+
   return (
     <UsersList>
       <UsersListItem />

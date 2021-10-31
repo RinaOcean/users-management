@@ -1,13 +1,20 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { editUser, getUsers, removeUser } from '../../redux/users';
+import { useHistory } from 'react-router';
+import { getUsers, removeUser } from '../../redux/users';
 import './UsersListItem.module.css';
 
 export default function UsersListItem() {
   const dispatch = useDispatch();
   const users = useSelector(getUsers);
   const onDelete = id => dispatch(removeUser(id));
+  let history = useHistory();
+  const handleClick = id => {
+    let path = `/details/${id}`;
+    history.push(path)
+
+  }
 
   return (
     <>
@@ -15,7 +22,7 @@ export default function UsersListItem() {
         users.map(({ id, first_name, last_name, birth_date, gender }) => {
 
           return (
-            <li key={id} className="UsersListItem">
+            <li key={id} className="UsersListItem" onClick={() => handleClick(id)}>
               <p className="UsersListItemInfo">First name: {first_name}</p>
               <p className="UsersListItemInfo">Last name: {last_name}</p>
               <p className="UsersListItemInfo">Date of Birth: {birth_date}</p>

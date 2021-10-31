@@ -33,7 +33,7 @@ export const fetchUser = (userId) => async dispatch => {
   dispatch(fetchUserRequest);
 
   try {
-    const { data } = await axios.get(`https://frontend-candidate.dev.sdh.com.ua/v1/contact/:${userId}/`);
+    const { data } = await axios.get(`https://frontend-candidate.dev.sdh.com.ua/v1/contact/${userId}/`);
     dispatch(fetchUserSuccess(data));
   } catch (error) {
     dispatch(fetchUserError(error.message));

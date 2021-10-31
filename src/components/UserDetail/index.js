@@ -1,1 +1,1 @@
-export { default } from './UsersListItemCommon'
+export { default } from './UserDetail'
