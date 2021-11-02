@@ -1,5 +1,5 @@
 // import { combineReducers } from "redux";
-import { createReducer } from '@reduxjs/toolkit';
+import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import {
   // fetchUserRequest,
   fetchUserSuccess,
@@ -25,4 +25,12 @@ const items = createReducer([], {
 
 });
 
-export default items;
+const user = createReducer([], {
+  
+  [fetchUserSuccess]: (_, { payload }) => payload,
+ 
+
+});
+
+
+export default combineReducers({items, user});

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { getUsers, removeUser } from '../../redux/users';
 import './UsersListItem.module.css';

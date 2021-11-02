@@ -8,11 +8,12 @@ import { fetchAllUsers } from './redux/users';
 import { useDispatch } from 'react-redux';
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAllUsers())
-  }, [dispatch])
-
+  // const dispatch = useDispatch();
+  
+  // useEffect(() => {
+    
+  //   dispatch(fetchAllUsers());
+  // }, [dispatch]);
   return (
     <Switch>
       <Route path="/" component={UsersListPage} exact />

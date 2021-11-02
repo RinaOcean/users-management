@@ -1,25 +1,30 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { getUsers, removeUser, editUser } from '../../redux/users';
+import { getUsers, removeUser, editUser, fetchAllUsers } from '../../redux/users';
 import css from './UserDetail.module.css';
 
-export default function UserDetail() {
+export default function UserDetail({user}) {
   const dispatch = useDispatch();
-  const users = useSelector(getUsers);
-  const history = useHistory();
-  const currPath = history.location.pathname;
-  const userId = history.location.pathname.slice(9, currPath.length)
-  const user = users.find(user => user.id === +userId)
-  console.log(users);
-  console.log(userId);
-  console.log(user);
-  const { id, first_name, last_name, birth_date, gender, job, biography, is_active } = user
-  const enabled = String(is_active)
+  // useEffect(() => {
+  //   dispatch(fetchAllUsers());
+  // }, [dispatch]);
 
+  // const users = useSelector(getUsers);
+  // const history = useHistory();
+  // const currPath = history.location.pathname;
+  // const userId = history.location.pathname.slice(9, currPath.length)
+  // const user = users.find(user => user.id === +userId)
+  // console.log('users=>>>>',users);
+  // console.log(userId);
+ 
   const onDelete = id => dispatch(removeUser(id));
   const onEdit = id => dispatch(editUser(id))
+  
+  const { id, first_name, last_name, birth_date, gender, job, biography, is_active } = user
+  const enabled = String(is_active)
   // return (
   // <>
   //   {users.map(({ id, first_name, last_name, birth_date, gender, job, biography, is_active }) => {
