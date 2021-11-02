@@ -81,11 +81,11 @@ export const removeUser = (userId) => dispatch => {
     })
 }
 
-export const editUser = (userId) => dispatch => {
+export const editUser = (userId, user) => dispatch => {
   dispatch(editUserRequest());
 
   axios
-    .put(`https://frontend-candidate.dev.sdh.com.ua/v1/contact/:${userId}/`)
+    .put(`https://frontend-candidate.dev.sdh.com.ua/v1/contact/${userId}/`, user)
     .then(() => {
       dispatch(editUserSuccess(userId));
       console.log('User was successfully edited');

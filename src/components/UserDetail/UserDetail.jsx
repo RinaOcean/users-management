@@ -8,20 +8,16 @@ import css from './UserDetail.module.css';
 
 export default function UserDetail({user}) {
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchAllUsers());
-  // }, [dispatch]);
-
-  // const users = useSelector(getUsers);
-  // const history = useHistory();
-  // const currPath = history.location.pathname;
-  // const userId = history.location.pathname.slice(9, currPath.length)
-  // const user = users.find(user => user.id === +userId)
-  // console.log('users=>>>>',users);
-  // console.log(userId);
  
+  let history = useHistory()
+
+  const onEdit = (id) => {
+   const path = `/edit/${id}`
+   history.push(path)
+  }
+
   const onDelete = id => dispatch(removeUser(id));
-  const onEdit = id => dispatch(editUser(id))
+  
 
   const { id, first_name, last_name, birth_date, gender, job, biography, is_active } = user
   const enabled = String(is_active)

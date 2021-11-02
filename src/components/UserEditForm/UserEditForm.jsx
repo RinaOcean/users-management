@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
-import { addUser } from '../../redux/users';
+import { addUser, editUser } from '../../redux/users';
 
-import css from './UsersForm.module.css';
+import css from './UserEditForm.module.css';
 
-export default function UsersForm() {
+export default function UsersForm({user}) {
 
   const dispatch = useDispatch();
 
-  const [first_name, setFirst_name] = useState('');
-  const [last_name, setLast_name] = useState('');
-  const [birth_date, setBirth_date] = useState('');
-  const [gender, setGender] = useState('');
-  const [job, setJob] = useState('');
-  const [biography, setBiography] = useState('');
-  const [is_active, setIs_active] = useState(false);
+  const [first_name, setFirst_name] = useState(user.first_name);
+  const [last_name, setLast_name] = useState(user.last_name);
+  const [birth_date, setBirth_date] = useState(user.birth_date);
+  const [gender, setGender] = useState(user.gender);
+  const [job, setJob] = useState(user.job);
+  const [biography, setBiography] = useState(user.biography);
+  const [is_active, setIs_active] = useState(user.is_active);
 
   const firstNameId = nanoid();
   const lastNameId = nanoid();
@@ -28,16 +28,19 @@ export default function UsersForm() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    
-    dispatch(addUser({ first_name, last_name, birth_date, gender, job, biography, is_active }))
+    const updatedUser = {
+      first_name,
+      last_name,
+      birth_date,
+      gender,
+      job,
+      biography,
+      is_active,
+    }
+    dispatch(editUser(user.id, updatedUser))
+    console.log(updatedUser);
 
-    setFirst_name('');
-    setLast_name('');
-    setBirth_date('');
-    setGender('');
-    setJob('');
-    setBiography('');
-    setIs_active('false');
+   
   }
 
   return (

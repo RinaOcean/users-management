@@ -6,8 +6,11 @@ import './UsersListItem.module.css';
 
 export default function UsersListItem() {
   const dispatch = useDispatch();
+
   const users = useSelector(getUsers);
+
   const onDelete = id => dispatch(removeUser(id));
+  
   let history = useHistory();
   const handleClick = id => {
     let path = `/details/${id}`;
