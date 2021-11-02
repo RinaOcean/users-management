@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
-import { addUser, editUser } from '../../redux/users';
+import {  editUser, fetchUser } from '../../redux/users';
 
 import css from './UserEditForm.module.css';
+import { useHistory } from 'react-router';
 
 export default function UsersForm({user}) {
-
   const dispatch = useDispatch();
 
+  
   const [first_name, setFirst_name] = useState(user.first_name);
   const [last_name, setLast_name] = useState(user.last_name);
   const [birth_date, setBirth_date] = useState(user.birth_date);
@@ -26,6 +27,8 @@ export default function UsersForm({user}) {
   const biographyId = nanoid();
   const is_activeId = nanoid();
 
+let history = useHistory()
+
   const handleSubmit = event => {
     event.preventDefault();
     const updatedUser = {
@@ -38,8 +41,9 @@ export default function UsersForm({user}) {
       is_active,
     }
     dispatch(editUser(user.id, updatedUser))
-    console.log(updatedUser);
-
+    dispatch(fetchUser(user.id))
+    let path = `/details/${user.id}`;
+    history.push(path)
    
   }
 
@@ -91,7 +95,6 @@ export default function UsersForm({user}) {
           value={gender}
           onChange={event => setGender(event.target.value)}
         >
-          <option value="" selected disabled></option>
           <option value="male">male</option>
           <option value="female">female</option>
 

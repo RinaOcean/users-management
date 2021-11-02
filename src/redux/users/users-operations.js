@@ -51,7 +51,7 @@ export const addUser = ({ first_name, last_name, birth_date, gender, job, biogra
     biography,
     is_active,
   };
-
+  
   dispatch(addUserRequest());
 
   axios
@@ -62,7 +62,8 @@ export const addUser = ({ first_name, last_name, birth_date, gender, job, biogra
     })
     .catch(error => {
       dispatch(addUserError(error.message));
-      console.log('Something went wrong. Please, retry');
+      console.log(user);
+      console.log(error.message);
     });
 };
 

@@ -13,7 +13,7 @@ export default function UsersForm() {
   const [first_name, setFirst_name] = useState('');
   const [last_name, setLast_name] = useState('');
   const [birth_date, setBirth_date] = useState('');
-  const [gender, setGender] = useState('');
+  const [gender, setGender] = useState('male');
   const [job, setJob] = useState('');
   const [biography, setBiography] = useState('');
   const [is_active, setIs_active] = useState(false);
@@ -31,13 +31,7 @@ export default function UsersForm() {
     
     dispatch(addUser({ first_name, last_name, birth_date, gender, job, biography, is_active }))
 
-    setFirst_name('');
-    setLast_name('');
-    setBirth_date('');
-    setGender('');
-    setJob('');
-    setBiography('');
-    setIs_active('false');
+    
   }
 
   return (
@@ -88,7 +82,7 @@ export default function UsersForm() {
           value={gender}
           onChange={event => setGender(event.target.value)}
         >
-          <option value="" selected disabled></option>
+          {/* <option value="gender" disabled>gender</option> */}
           <option value="male">male</option>
           <option value="female">female</option>
 
@@ -127,7 +121,7 @@ export default function UsersForm() {
           name="isActive"
 
           value={is_active}
-          onChange={event => setIs_active(event.target.value)}
+          onChange={event => setIs_active(event.target.checked)}
           id={is_activeId}
         />
 
