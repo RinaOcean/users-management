@@ -1,9 +1,69 @@
+.formWrapper {
+  margin: 0 auto;
+  width: 400px;
+  padding: 30px;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 10px;
+  font-weight: 500;
+  box-shadow: 2px 6px 13px -2px rgba(0, 0, 0, 0.3);
+}
+
 .form {
   display: flex;
   flex-direction: column;
 }
 
-.formWrapper {
-  margin: 0 auto;
-  width: 500px;
+.form input::placeholder,
+.form select::placeholder,
+.form textarea::placeholder {
+  font-size: 14px;
+}
+
+.formWrapper label {
+  font-weight: 400;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.formWrapper input,
+.formWrapper select {
+  margin-bottom: 20px;
+  border-style: none;
+  outline-style: none;
+  border-bottom: 1px solid gray;
+}
+
+.formWrapper textarea {
+  width: 100%;
+  resize: vertical;
+  margin-bottom: 20px;
+  border-style: none;
+  outline-style: none;
+  border: 1px solid gray;
+}
+
+.formWrapper input:hover,
+.formWrapper input:focus,
+.formWrapper select:hover,
+.formWrapper select:focus {
+  margin-bottom: 20px;
+  border-style: none;
+  outline-style: none;
+  border-bottom: 2px solid rgb(46, 46, 46);
+}
+
+.addButton {
+  margin-top: 25px;
+  padding: 10px;
+  border-style: none;
+  outline-style: none;
+  border-radius: 5px;
+  color: #838383;
+  cursor: pointer;
+}
+
+.addButton:hover,
+.addButton:focus {
+  background-color: rgb(151, 207, 155);
+  color: rgb(255, 255, 255);
 }

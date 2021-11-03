@@ -82,7 +82,7 @@ export default function UsersForm() {
           value={gender}
           onChange={event => setGender(event.target.value)}
         >
-          {/* <option value="gender" disabled>gender</option> */}
+          
           <option value="male">male</option>
           <option value="female">female</option>
 
@@ -126,7 +126,7 @@ export default function UsersForm() {
         />
 
 
-        <button type="submit">Add</button>
+        <button className={css.addButton} type="submit">Add</button>
 
       </form >
     </div>

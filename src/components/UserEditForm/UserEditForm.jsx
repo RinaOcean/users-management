@@ -122,6 +122,7 @@ let history = useHistory()
           required
           placeholder="Your biography"
           value={biography}
+
           onChange={event => setBiography(event.target.value)}
           id={biographyId}
         >
@@ -131,14 +132,14 @@ let history = useHistory()
         <input
           type="checkbox"
           name="isActive"
-
+          checked={is_active}
           value={is_active}
           onChange={event => setIs_active(event.target.value)}
           id={is_activeId}
         />
 
 
-        <button type="submit">Add</button>
+        <button className={css.addButton} type="submit">Add</button>
 
       </form >
     </div>
