@@ -46,10 +46,13 @@
 .formWrapper input:focus,
 .formWrapper select:hover,
 .formWrapper select:focus {
-  margin-bottom: 20px;
-  border-style: none;
-  outline-style: none;
+  /* border-style: none;
+  outline-style: none; */
   border-bottom: 2px solid rgb(46, 46, 46);
+}
+.formWrapper textarea:hover,
+.formWrapper textarea:focus {
+  border: 2px solid rgb(46, 46, 46);
 }
 
 .addButton {

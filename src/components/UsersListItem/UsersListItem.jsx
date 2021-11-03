@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { getUsers, removeUser } from '../../redux/users';
+import { fetchAllUsers, getUsers, removeUser } from '../../redux/users';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import css from'./UsersListItem.module.css';
@@ -16,6 +16,7 @@ export default function UsersListItem() {
   let history = useHistory();
   const handleClick = id => {
     let path = `/details/${id}`;
+    dispatch(fetchAllUsers())
     history.push(path)
 
   }

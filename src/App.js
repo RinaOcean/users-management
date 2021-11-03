@@ -10,12 +10,13 @@ import { fetchAllUsers } from './redux/users';
 import { useDispatch } from 'react-redux';
 
 function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   dispatch(fetchAllUsers());
-  // }, [dispatch]);
+    dispatch(fetchAllUsers());
+  }, [dispatch]);
+  
   return (
     <Container>
       <Switch>

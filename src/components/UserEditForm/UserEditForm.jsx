@@ -139,7 +139,7 @@ let history = useHistory()
         />
 
 
-        <button className={css.addButton} type="submit">Add</button>
+        <button className={css.addButton} type="submit">Update</button>
 
       </form >
     </div>
