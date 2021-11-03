@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllUsers, fetchUser, getCurrUser } from "../../redux/users";
 
-import UsersList from "../../components/UsersList/UsersList";
 import UserDetail from "../../components/UserDetail/UserDetail";
 import { useHistory } from "react-router-dom";
 
@@ -24,6 +23,5 @@ const user = useSelector(getCurrUser)
 
   return (
     <UserDetail user={user}/>
-    
   )
 };

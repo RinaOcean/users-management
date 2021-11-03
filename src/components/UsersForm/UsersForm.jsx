@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
-import { addUser } from '../../redux/users';
+import { addUser, fetchAllUsers } from '../../redux/users';
+
+import * as check from '../../components/helpers/validate';
 
 import css from './UsersForm.module.css';
+import { useHistory } from 'react-router';
 
 export default function UsersForm() {
 
@@ -26,13 +29,25 @@ export default function UsersForm() {
   const biographyId = nanoid();
   const is_activeId = nanoid();
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    
-    dispatch(addUser({ first_name, last_name, birth_date, gender, job, biography, is_active }))
+  let history = useHistory();
 
-    
-  }
+  const handleSubmit = async event => {
+    try{
+      event.preventDefault();
+      
+      await check.validateThis({ first_name, last_name, birth_date, gender, job, biography, is_active });
+      await check.sanitizeThis({ first_name, last_name, birth_date, gender, job, biography, is_active });
+
+      dispatch(addUser({ first_name, last_name, birth_date, gender, job, biography, is_active }));
+      dispatch(fetchAllUsers());
+
+      let path = `/`;
+      history.push(path);
+
+    } catch(error){
+      console.log(error);
+    }
+   };
 
   return (
     <div className={css.formWrapper}>

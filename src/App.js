@@ -3,11 +3,12 @@ import UserDetailPage from './pages/UserDetailsPage'
 import CreateUserPage from './pages/CreateUserPage'
 import EditUserPage from './pages/EditUserPage';
 import Container  from './components/Container';
-import './App.css';
 import { Route, Switch } from 'react-router';
 import { useEffect } from 'react';
 import { fetchAllUsers } from './redux/users';
 import { useDispatch } from 'react-redux';
+
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();

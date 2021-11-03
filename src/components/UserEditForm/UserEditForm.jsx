@@ -1,11 +1,13 @@
 import React, {  useState } from 'react';
-
-import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+
 import {  editUser, fetchUser } from '../../redux/users';
+import { nanoid } from 'nanoid';
+
+import * as check from '../../components/helpers/validate';
 
 import css from './UserEditForm.module.css';
-import { useHistory } from 'react-router';
 
 export default function UsersForm({user}) {
   const dispatch = useDispatch();
@@ -29,23 +31,33 @@ export default function UsersForm({user}) {
 
 let history = useHistory()
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    const updatedUser = {
-      first_name,
-      last_name,
-      birth_date,
-      gender,
-      job,
-      biography,
-      is_active,
-    }
-    dispatch(editUser(user.id, updatedUser))
-    dispatch(fetchUser(user.id))
-    let path = `/details/${user.id}`;
-    history.push(path)
+  const handleSubmit = async event => {
+    try {  
+      event.preventDefault();
+
+      const updatedUser = {
+        first_name,
+        last_name,
+        birth_date,
+        gender,
+        job,
+        biography,
+        is_active,
+      } 
+
+      await check.validateThis({ first_name, last_name, birth_date, gender, job, biography, is_active });
+      await check.sanitizeThis({ first_name, last_name, birth_date, gender, job, biography, is_active });
+
+      dispatch(editUser(user.id, updatedUser));
+      dispatch(fetchUser(user.id));
+      let path = `/details/${user.id}`;
+      history.push(path);
+    } catch(error){
+      console.log(error);
+    };
+  
    
-  }
+  };
 
   return (
     <div className={css.formWrapper}>
