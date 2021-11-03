@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { getUsers, removeUser, editUser, fetchAllUsers } from '../../redux/users';
+import AddUserButton from '../AddUserButton';
 import css from './UserDetail.module.css';
 
 export default function UserDetail({user}) {
@@ -23,7 +24,8 @@ export default function UserDetail({user}) {
   const enabled = String(is_active)
  
   return (
-    <li key={id} className="UsersListItem">
+    <div className="UsersListItem">
+      <AddUserButton/>
       <p className="UsersListItemInfo">First name: {first_name}</p>
       <p className="UsersListItemInfo">Last name: {last_name}</p>
       <p className="UsersListItemInfo">Date of Birth: {birth_date}</p>
@@ -33,7 +35,7 @@ export default function UserDetail({user}) {
       <p className="UsersListItemInfo">Enabled: {enabled}</p>
       <button type="button" onClick={() => onEdit(id)}>Edit</button>
       <button type="button" onClick={() => onDelete(id)}>Delete</button>
-    </li>
+    </div>
    
   );
 };

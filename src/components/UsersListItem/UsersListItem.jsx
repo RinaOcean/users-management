@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { getUsers, removeUser } from '../../redux/users';
-import './UsersListItem.module.css';
+import DeleteIcon from '@mui/icons-material/Delete';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import css from'./UsersListItem.module.css';
 
 export default function UsersListItem() {
   const dispatch = useDispatch();
@@ -24,12 +26,14 @@ export default function UsersListItem() {
         users.map(({ id, first_name, last_name, birth_date, gender }) => {
 
           return (
-            <li key={id} className="UsersListItem" onClick={() => handleClick(id)}>
-              <p className="UsersListItemInfo">First name: {first_name}</p>
-              <p className="UsersListItemInfo">Last name: {last_name}</p>
-              <p className="UsersListItemInfo">Date of Birth: {birth_date}</p>
-              <p className="UsersListItemInfo">Gender: {gender}</p>
-              <button type="button" onClick={() => onDelete(id)}>Delete</button>
+            <li key={id} className={css.usersListItem} onClick={() => handleClick(id)}>
+              <div className={css.usersInfoWrapper}>
+              <p className="UsersListItemInfo">{first_name} {last_name}</p>
+              <p className="UsersListItemInfo"></p>
+              <p className="UsersListItemInfo">{birth_date}</p>
+              <p className="UsersListItemInfo">{gender}</p>
+              </div>
+              <button type="button" className={css.deleteUserButton} onClick={() => onDelete(id)}><HighlightOffIcon/></button>
             </li>
           );
         })

@@ -2,6 +2,7 @@ import UsersListPage from './pages/UsersListPage/UsersListPage';
 import UserDetailPage from './pages/UserDetailsPage'
 import CreateUserPage from './pages/CreateUserPage'
 import EditUserPage from './pages/EditUserPage';
+import Container  from './components/Container';
 import './App.css';
 import { Route, Switch } from 'react-router';
 import { useEffect } from 'react';
@@ -16,13 +17,14 @@ function App() {
   //   dispatch(fetchAllUsers());
   // }, [dispatch]);
   return (
-    <Switch>
-      <Route path="/" component={UsersListPage} exact />
-      <Route path="/create" component={CreateUserPage} />
-      <Route path="/details/:id" component={UserDetailPage} />
-      <Route path="/edit/:id" component={EditUserPage} />
-     
-    </Switch>
+    <Container>
+      <Switch>
+        <Route path="/" component={UsersListPage} exact />
+        <Route path="/create" component={CreateUserPage} />
+        <Route path="/details/:id" component={UserDetailPage} />
+        <Route path="/edit/:id" component={EditUserPage} />
+      </Switch>
+    </Container>
   );
 }
 

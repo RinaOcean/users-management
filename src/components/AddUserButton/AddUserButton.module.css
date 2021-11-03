@@ -1,0 +1,20 @@
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  border-radius: 50%;
+  margin-bottom: 25px;
+  border-style: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(132, 185, 168);
+  cursor: pointer;
+}
+
+.addButton:hover,
+.addButton:focus {
+  transform: scale(1.1);
+  color: rgb(23, 104, 78);
+}

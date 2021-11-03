@@ -23,8 +23,7 @@ const dispatch = useDispatch();
 const user = useSelector(getCurrUser)
 
   return (
-    <UsersList>
-      <UserDetail user={user}/>
-    </UsersList>
+    <UserDetail user={user}/>
+    
   )
 };
