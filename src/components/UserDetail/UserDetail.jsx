@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { getUsers, removeUser, editUser, fetchAllUsers } from '../../redux/users';
+import {  removeUser } from '../../redux/users';
 import AddUserButton from '../AddUserButton';
+import EditIcon from '@mui/icons-material/Edit';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import css from './UserDetail.module.css';
 
 export default function UserDetail({user}) {
@@ -24,17 +25,23 @@ export default function UserDetail({user}) {
   const enabled = String(is_active)
  
   return (
-    <div className="UsersListItem">
+    <div>
       <AddUserButton/>
-      <p className="UsersListItemInfo">First name: {first_name}</p>
-      <p className="UsersListItemInfo">Last name: {last_name}</p>
-      <p className="UsersListItemInfo">Date of Birth: {birth_date}</p>
-      <p className="UsersListItemInfo">Gender: {gender}</p>
-      <p className="UsersListItemInfo">Job: {job}</p>
-      <p className="UsersListItemInfo">Biography: {biography}</p>
-      <p className="UsersListItemInfo">Enabled: {enabled}</p>
-      <button type="button" onClick={() => onEdit(id)}>Edit</button>
-      <button type="button" onClick={() => onDelete(id)}>Delete</button>
+      <div className={css.UserCard}>
+        <div>
+          <p className={css.UserInfo}>First name: <span>{first_name}</span> </p>
+          <p className={css.UserInfo}>Last name: <span>{last_name}</span></p>
+          <p className={css.UserInfo}>Birthdate: <span>{birth_date}</span></p>
+          <p className={css.UserInfo}>Gender: <span>{gender}</span></p>
+          <p className={css.UserInfo}>Job: <span>{job}</span></p>
+          <p className={css.UserInfo}>Biography: <span>{biography}</span></p>
+          <p className={css.UserInfo}>Enabled: <span>{enabled}</span></p>
+          <div className={css.buttonsWrapper}>
+            <button className={css.edit} type="button" onClick={() => onEdit(id)}><EditIcon/></button>
+            <button className={css.delete}  type="button" onClick={() => onDelete(id)}><HighlightOffIcon/></button>
+          </div>
+        </div>
+      </div>
     </div>
    
   );
